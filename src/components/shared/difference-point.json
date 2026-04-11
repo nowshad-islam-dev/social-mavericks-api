@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_difference_points",
+  "info": {
+    "displayName": "Difference point"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
