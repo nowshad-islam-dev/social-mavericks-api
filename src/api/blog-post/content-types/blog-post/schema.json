@@ -40,10 +40,6 @@
     "author_name": {
       "type": "string"
     },
-    "published_date": {
-      "type": "date",
-      "required": false
-    },
     "seo_title": {
       "type": "string"
     },

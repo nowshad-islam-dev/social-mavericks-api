@@ -529,7 +529,6 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
       'api::blog-post.blog-post'
     > &
       Schema.Attribute.Private;
-    published_date: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
     seo_description: Schema.Attribute.Text;
     seo_title: Schema.Attribute.String;
@@ -558,7 +557,6 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     footer_description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -566,7 +564,6 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
       'api::global.global'
     > &
       Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     navigation_links: Schema.Attribute.Component<
       'shared.navigation-link',
       true
@@ -686,7 +683,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.String & Schema.Attribute.Required;
-    slud: Schema.Attribute.UID<'title'>;
+    slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
