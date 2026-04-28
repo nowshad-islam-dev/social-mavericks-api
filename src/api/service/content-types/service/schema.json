@@ -23,22 +23,38 @@
       "type": "string",
       "required": true
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "order": {
       "type": "integer"
     },
     "long_description": {
       "type": "blocks",
       "required": true
+    },
+    "track": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::track.track",
+      "inversedBy": "services"
+    },
+    "pricing": {
+      "type": "enumeration",
+      "enum": [
+        "Retainer",
+        "Fixed",
+        "Milestone-based"
+      ]
+    },
+    "tags": {
+      "type": "json"
+    },
+    "is_differentiator": {
+      "type": "boolean",
+      "default": false
+    },
+    "faqs": {
+      "type": "component",
+      "component": "content.faq-item",
+      "repeatable": true
     }
   }
 }

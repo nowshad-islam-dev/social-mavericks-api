@@ -11,7 +11,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "hero_title": {
+    "hero_title_first": {
+      "type": "string"
+    },
+    "hero_title_second": {
       "type": "string"
     },
     "hero_subtitle": {
@@ -49,6 +52,9 @@
       "type": "string"
     },
     "cta_link": {
+      "type": "string"
+    },
+    "cta_description": {
       "type": "string"
     }
   }

@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ContentFaqItem extends Struct.ComponentSchema {
+  collectionName: 'components_content_faq_items';
+  info: {
+    displayName: 'faq-item';
+  };
+  attributes: {
+    answer: Schema.Attribute.Text & Schema.Attribute.Required;
+    question: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedDifferencePoint extends Struct.ComponentSchema {
   collectionName: 'components_shared_difference_points';
   info: {
@@ -36,6 +47,7 @@ export interface SharedSocialLink extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'content.faq-item': ContentFaqItem;
       'shared.difference-point': SharedDifferencePoint;
       'shared.navigation-link': SharedNavigationLink;
       'shared.social-link': SharedSocialLink;

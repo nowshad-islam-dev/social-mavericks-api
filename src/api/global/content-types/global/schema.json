@@ -12,6 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "contact_title_first": {
+      "type": "string"
+    },
+    "contact_title_second": {
+      "type": "string"
+    },
+    "contact_description": {
+      "type": "string"
+    },
     "site_name": {
       "type": "string",
       "required": false
@@ -34,6 +43,12 @@
       "type": "component",
       "component": "shared.social-link",
       "repeatable": true
+    },
+    "address": {
+      "type": "string"
+    },
+    "google_map_link": {
+      "type": "text"
     }
   }
 }

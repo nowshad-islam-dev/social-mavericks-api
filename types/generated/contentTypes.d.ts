@@ -552,12 +552,17 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    address: Schema.Attribute.String;
+    contact_description: Schema.Attribute.String;
     contact_email: Schema.Attribute.String;
     contact_text: Schema.Attribute.String;
+    contact_title_first: Schema.Attribute.String;
+    contact_title_second: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     footer_description: Schema.Attribute.Text;
+    google_map_link: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -592,6 +597,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     cta_button_label: Schema.Attribute.String;
+    cta_description: Schema.Attribute.String;
     cta_link: Schema.Attribute.String;
     cta_title: Schema.Attribute.String;
     gallery_section_title: Schema.Attribute.String;
@@ -600,7 +606,8 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     >;
     hero_cta_label: Schema.Attribute.String;
     hero_subtitle: Schema.Attribute.String;
-    hero_title: Schema.Attribute.String;
+    hero_title_first: Schema.Attribute.String;
+    hero_title_second: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
       Schema.Attribute.Private;
@@ -672,7 +679,9 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    faqs: Schema.Attribute.Component<'content.faq-item', true>;
+    is_differentiator: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -681,10 +690,15 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     long_description: Schema.Attribute.Blocks & Schema.Attribute.Required;
     order: Schema.Attribute.Integer;
+    pricing: Schema.Attribute.Enumeration<
+      ['Retainer', 'Fixed', 'Milestone-based']
+    >;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.String & Schema.Attribute.Required;
     slug: Schema.Attribute.UID<'title'>;
+    tags: Schema.Attribute.JSON;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    track: Schema.Attribute.Relation<'manyToOne', 'api::track.track'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -725,6 +739,37 @@ export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
         number
       >;
     role_or_company: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTrackTrack extends Struct.CollectionTypeSchema {
+  collectionName: 'tracks';
+  info: {
+    displayName: 'Track';
+    pluralName: 'tracks';
+    singularName: 'track';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    label: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::track.track'> &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    slug: Schema.Attribute.UID<'tagline'>;
+    tagline: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1250,6 +1295,7 @@ declare module '@strapi/strapi' {
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
+      'api::track.track': ApiTrackTrack;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
