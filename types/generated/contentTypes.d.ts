@@ -455,10 +455,6 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    tech_stack_logos: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -633,15 +629,26 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.Enumeration<
-      ['ecommerce', 'erp', 'crm', 'cms', 'pos', 'others']
+      [
+        'all',
+        'custom-software',
+        'ecommerce',
+        'erp',
+        'crm',
+        'cms',
+        'pos',
+        'others',
+      ]
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'others'>;
+    client_industry: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    live_url: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -649,11 +656,13 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    result: Schema.Attribute.String;
     screenshots: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
     slug: Schema.Attribute.UID<'title'>;
+    tech_stack: Schema.Attribute.JSON;
     thumbnail: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &

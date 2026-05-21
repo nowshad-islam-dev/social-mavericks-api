@@ -19,11 +19,16 @@
       "type": "uid",
       "targetField": "title"
     },
+    "description": {
+      "type": "text"
+    },
     "category": {
       "type": "enumeration",
       "required": true,
       "default": "others",
       "enum": [
+        "all",
+        "custom-software",
         "ecommerce",
         "erp",
         "crm",
@@ -53,12 +58,21 @@
         "audios"
       ]
     },
-    "description": {
-      "type": "text"
-    },
     "featured": {
       "type": "boolean",
       "default": false
+    },
+    "result": {
+      "type": "string"
+    },
+    "client_industry": {
+      "type": "string"
+    },
+    "tech_stack": {
+      "type": "json"
+    },
+    "live_url": {
+      "type": "string"
     }
   }
 }
