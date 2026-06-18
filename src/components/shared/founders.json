@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_shared_founders",
+  "info": {
+    "displayName": "Founders"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "bio": {
+      "type": "text",
+      "required": true
+    },
+    "tags": {
+      "type": "json",
+      "required": true
+    },
+    "github": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string",
+      "required": true
+    },
+    "twitter": {
+      "type": "string"
+    },
+    "profile_photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "initials": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

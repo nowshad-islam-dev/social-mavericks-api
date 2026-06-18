@@ -12,15 +12,88 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
     "headline": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
+    },
+    "philosophy_title": {
+      "type": "string",
+      "required": true
+    },
+    "philosophy_heading": {
+      "type": "string",
+      "required": true
+    },
+    "timeline_title": {
+      "type": "string",
+      "required": true
+    },
+    "timeline_heading": {
+      "type": "string",
+      "required": true
+    },
+    "method_title": {
+      "type": "string",
+      "required": true
+    },
+    "method_heading": {
+      "type": "string",
+      "required": true
+    },
+    "founders_title": {
+      "type": "string"
+    },
+    "founders_heading": {
+      "type": "string",
+      "required": true
+    },
+    "founders_description": {
+      "type": "string",
+      "required": true
+    },
+    "gradient_cta_title": {
+      "type": "string",
+      "required": true
+    },
+    "gradient_cta_heading": {
+      "type": "string",
+      "required": true
+    },
+    "gradient_cta_description": {
+      "type": "text",
+      "required": true
     },
     "difference_points": {
       "type": "component",
       "component": "shared.difference-point",
+      "repeatable": true
+    },
+    "stats": {
+      "type": "component",
+      "component": "content.stats",
+      "repeatable": true
+    },
+    "milestones": {
+      "type": "component",
+      "component": "content.milestones",
+      "repeatable": true
+    },
+    "workflow_steps": {
+      "type": "component",
+      "component": "shared.workflow-steps",
+      "repeatable": true
+    },
+    "founders": {
+      "type": "component",
+      "component": "shared.founders",
       "repeatable": true
     }
   }

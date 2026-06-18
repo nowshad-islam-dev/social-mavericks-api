@@ -445,19 +445,36 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
     difference_points: Schema.Attribute.Component<
       'shared.difference-point',
       true
     >;
-    headline: Schema.Attribute.String;
+    founders: Schema.Attribute.Component<'shared.founders', true>;
+    founders_description: Schema.Attribute.String & Schema.Attribute.Required;
+    founders_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    founders_title: Schema.Attribute.String;
+    gradient_cta_description: Schema.Attribute.Text & Schema.Attribute.Required;
+    gradient_cta_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    gradient_cta_title: Schema.Attribute.String & Schema.Attribute.Required;
+    headline: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
       Schema.Attribute.Private;
+    method_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    method_title: Schema.Attribute.String & Schema.Attribute.Required;
+    milestones: Schema.Attribute.Component<'content.milestones', true>;
+    philosophy_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    philosophy_title: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    stats: Schema.Attribute.Component<'content.stats', true>;
+    timeline_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    timeline_title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    workflow_steps: Schema.Attribute.Component<'shared.workflow-steps', true>;
   };
 }
 
@@ -617,6 +634,37 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
+  collectionName: 'partners';
+  info: {
+    displayName: 'Partner';
+    pluralName: 'partners';
+    singularName: 'partner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::partner.partner'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
+  };
+}
+
 export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   collectionName: 'projects';
   info: {
@@ -685,6 +733,10 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    cover_photo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -701,7 +753,8 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.Integer;
     pricing: Schema.Attribute.Enumeration<
       ['Retainer', 'Fixed', 'Milestone-based']
-    >;
+    > &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.String & Schema.Attribute.Required;
     slug: Schema.Attribute.UID<'title'>;
@@ -1301,6 +1354,7 @@ declare module '@strapi/strapi' {
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
+      'api::partner.partner': ApiPartnerPartner;
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;

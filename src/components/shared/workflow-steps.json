@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_shared_workflow_steps",
+  "info": {
+    "displayName": "Workflow steps"
+  },
+  "options": {},
+  "attributes": {
+    "num": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}
