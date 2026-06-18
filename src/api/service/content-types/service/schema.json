@@ -23,12 +23,29 @@
       "type": "string",
       "required": true
     },
-    "order": {
-      "type": "integer"
-    },
     "long_description": {
       "type": "blocks",
       "required": true
+    },
+    "cover_photo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "pricing": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Retainer",
+        "Fixed",
+        "Milestone-based"
+      ]
     },
     "track": {
       "type": "relation",
@@ -36,13 +53,8 @@
       "target": "api::track.track",
       "inversedBy": "services"
     },
-    "pricing": {
-      "type": "enumeration",
-      "enum": [
-        "Retainer",
-        "Fixed",
-        "Milestone-based"
-      ]
+    "order": {
+      "type": "integer"
     },
     "tags": {
       "type": "json"

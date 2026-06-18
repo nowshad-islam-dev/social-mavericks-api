@@ -1,10 +1,14 @@
 {
-  "collectionName": "components_shared_difference_points",
+  "collectionName": "components_content_milestones",
   "info": {
-    "displayName": "Difference point"
+    "displayName": "Milestones"
   },
   "options": {},
   "attributes": {
+    "year": {
+      "type": "string",
+      "required": true
+    },
     "title": {
       "type": "string",
       "required": true
